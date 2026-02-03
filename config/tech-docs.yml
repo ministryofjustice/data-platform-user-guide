@@ -1,7 +1,7 @@
 ---
 host: https://user-guide.data-platform.service.justice.gov.uk
 show_govuk_logo: false
-service_name: Data platform User Guide
+service_name: Data Platform User Guide
 service_link: /
 header_links:
 enable_search: true
@@ -11,6 +11,6 @@ prevent_indexing: true
 show_contribution_banner: true
 github_repo: ministryofjustice/data-platform-user-guide
 github_branch: main
-full_service_name: Data platform User Guide
+full_service_name: Data Platform User Guide
 show_expiry: true
 show_review_banner: true
