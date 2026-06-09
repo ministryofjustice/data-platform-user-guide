@@ -1,2 +1,2 @@
-* @ministryofjustice/data-platform-architecture @ministryofjustice/data-platform-engineering
-source/ @ministryofjustice/data-platform-user-centred-design
+* @ministryofjustice/data-platform-engineering
+source/**/*.md.erb @ministryofjustice/data-platform-documentation-reviewers
