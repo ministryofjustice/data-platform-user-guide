@@ -1,0 +1,94 @@
+---
+title: Creating a project
+weight: 3
+last_reviewed_on: 2026-07-21
+review_in: 12 months
+---
+
+# <%= current_page.data.title %>
+
+The Justice Data Platform uses a projects-based system to help keep your data and models secure, reproducible and scalable. When you create a project, you can:
+
+ * add members to it (optional)
+ * create an API key
+ * set the business unit it’s associated with
+
+You can only add members with an `@justice.gov.uk` email address.
+
+Once you have a working API key, you can use it to access AI models through the Justice Data Platform’s AI gateway.
+
+## Create an API key for your project
+
+After creating your project, follow the steps on the Justice Data Platform to create an API key. Make sure you save the API key in a secure place.
+
+## Check your API key works
+
+After you’ve created your API key, make a basic request to the Justice Data Platform’s AI gateway to check it works. You can do this by completing the steps below.
+
+### Test your API key in your IDE
+
+1. Follow OpenAI’s documentation to [install an official SDK](https://developers.openai.com/api/docs/libraries?#install-an-official-sdk) for your language.
+
+1. Send an API request in your IDE. You can refer to the Python example request below, replacing `AI_GATEWAY_API_KEY` with your API key.
+
+    ```
+
+    import os
+
+    from openai import OpenAI
+
+
+
+    client = OpenAI(
+
+    api_key=os.environ["AI_GATEWAY_API_KEY"],
+
+    base_url="https://ai-gateway.justice.gov.uk/"
+
+    )
+
+
+
+    response = client.responses.create(
+
+    model="<model-name>",
+
+    input="Reply with: Your API key is working."
+
+    )
+
+
+
+    print(response.output_text)
+
+    ```
+
+1. Check the response. If successful, you’ll receive `Your API key is working`.
+
+
+### Test your API key with `curl`
+
+If the request in your IDE is successful, you do not need to do this step. You can use it to help identify whether a problem is with your API key or the Justice Data Platform.
+
+1. Set your API key as an environment variable using the following command:
+
+    ```bash
+
+    export AI_GATEWAY_API_KEY="<your-api-key>"
+
+    ```
+
+1. Send a request using `curl`, replacing placeholders in the example below with your API key and the model you want to use.
+
+    ``` bash
+            curl https://ai-gateway.justice.gov.uk/responses \
+            -H "Authorization: Bearer $AI_GATEWAY_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+            "model": "<model-name>",
+            "input": "Reply with: Your API key is working"
+        }'
+
+    ```
+
+1. Check the response. If successful, you’ll receive `Your API key is working`.
