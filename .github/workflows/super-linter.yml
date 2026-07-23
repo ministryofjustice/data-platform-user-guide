@@ -21,5 +21,6 @@ jobs:
         {
           "VALIDATE_CSS": false,
           "VALIDATE_JSCPD": false,
-          "FILTER_REGEX_EXCLUDE": "(\\.github/workflows/.*\\.yml|config/.*\\.yml)"
+          "LINTER_RULES_PATH": ".",
+          "YAML_CONFIG_FILE": ".yaml-lint.yml"
         }
