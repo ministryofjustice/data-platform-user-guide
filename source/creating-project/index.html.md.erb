@@ -31,23 +31,14 @@ After you’ve created your API key, make a basic request to the Justice Data Pl
 
 1. Send an API request in your IDE. You can refer to the Python example request below, replacing `AI_GATEWAY_API_KEY` with your API key.
 
-    ```
-
+    ```python
     import os
-
     from openai import OpenAI
 
-
-
     client = OpenAI(
-
-    api_key=os.environ["AI_GATEWAY_API_KEY"],
-
-    base_url="https://ai-gateway.justice.gov.uk/"
-
+        api_key=os.environ["AI_GATEWAY_API_KEY"],
+        base_url="https://ai-gateway.justice.gov.uk/",
     )
-
-
 
     response = client.responses.create(
 
