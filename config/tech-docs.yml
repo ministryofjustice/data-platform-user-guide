@@ -4,6 +4,7 @@ show_govuk_logo: false
 service_name: Justice Data Platform
 service_link: https://data-platform.service.justice.gov.uk
 header_links:
+  User guide: https://user-guide.data-platform.service.justice.gov.uk
 enable_search: true
 multipage_nav: true
 collapsible_nav: true
@@ -15,6 +16,4 @@ github_branch: main
 full_service_name: Justice Data Platform
 show_expiry: true
 show_review_banner: true
-header_links:
-  User guide: https://user-guide.data-platform.service.justice.gov.uk
 ga4_tracking_id: G-K9RSJ6P8JT

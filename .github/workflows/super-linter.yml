@@ -20,5 +20,6 @@ jobs:
       super-linter-variables: |
         {
           "VALIDATE_CSS": false,
-          "VALIDATE_JSCPD": false
+          "VALIDATE_JSCPD": false,
+          "FILTER_REGEX_EXCLUDE": "(\\.github/workflows/.*\\.yml|config/.*\\.yml)"
         }
