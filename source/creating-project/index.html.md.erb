@@ -7,7 +7,7 @@ review_in: 12 months
 
 # <%= current_page.data.title %>
 
-The Justice Data Platform uses a projects-based system to help keep your data and models secure, reproducible and scalable. When you create a project, you can:
+The Justice Data Platform uses a project-based system to help keep your data and models secure, reproducible and scalable. When you create a project, you can:
 
 * add members to it (optional)
 * create an API key
@@ -57,22 +57,19 @@ If the request in your IDE is successful, you do not need to do this step. You c
 1. Set your API key as an environment variable using the following command:
 
     ```bash
-
     export AI_GATEWAY_API_KEY="<your-api-key>"
-
     ```
 
 1. Send a request using `curl`, replacing placeholders in the example below with your API key and the model you want to use.
 
-    ``` bash
-            curl https://ai-gateway.justice.gov.uk/responses \
-            -H "Authorization: Bearer $AI_GATEWAY_API_KEY" \
-            -H "Content-Type: application/json" \
-            -d '{
-            "model": "<model-name>",
-            "input": "Reply with: Your API key is working"
-        }'
-
+     ```bash
+     curl https://ai-gateway.justice.gov.uk/responses \
+       -H "Authorization: Bearer $AI_GATEWAY_API_KEY" \
+       -H "Content-Type: application/json" \
+       -d '{
+         "model": "<model-name>",
+         "input": "Reply with: Your API key is working"
+       }'
     ```
 
 1. Check the response. If successful, you’ll receive `Your API key is working`.
