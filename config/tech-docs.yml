@@ -5,6 +5,8 @@ service_name: Justice Data Platform
 service_link: https://data-platform.service.justice.gov.uk
 header_links:
   User guide: https://user-guide.data-platform.service.justice.gov.uk
+footer_links:
+  Accessibility: /accessibility.html
 enable_search: true
 multipage_nav: true
 collapsible_nav: true
