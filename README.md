@@ -12,8 +12,8 @@ This repository holds the [user guidance](https://user-guide.data-platform.servi
 
 The `Makefile` provides the following commands. The `package` and `preview` targets use Docker, so you'll need [Docker](https://www.docs.docker.com/get-docker/) installed and running.
 
-| Command | Description |
-| --- | --- |
-| `make preview` | Build and serve the documentation locally for preview at [http://localhost:4567](http://localhost:4567).|
-| `make package` | Build the documentation into a static site ready for publishing. |
-| `make link-check` | Check for broken links across the Markdown, HTML and ERB files using [lychee](https://github.com/lycheeorg/lychee).|
+| Command           | Description                                                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `make preview`    | Build and serve the documentation locally for preview at [http://localhost:4567](http://localhost:4567).            |
+| `make package`    | Build the documentation into a static site ready for publishing.                                                    |
+| `make link-check` | Check for broken links across the Markdown, HTML and ERB files using [lychee](https://github.com/lycheeorg/lychee). |
