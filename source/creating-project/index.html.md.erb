@@ -1,7 +1,7 @@
 ---
 title: Creating a project
 weight: 3
-last_reviewed_on: 2026-07-21
+last_reviewed_on: 2026-07-29
 review_in: 12 months
 ---
 
@@ -29,7 +29,13 @@ After you’ve created your API key, make a basic request to the Justice Data Pl
 
 1. Follow OpenAI’s documentation to [install an official SDK](https://developers.openai.com/api/docs/libraries?#install-an-official-sdk) for your language.
 
-1. Send an API request in your IDE. You can refer to the Python example request below, replacing `AI_GATEWAY_API_KEY` with your API key.
+1. Set your API key as an environment variable using the following command:
+
+    ```bash
+    export AI_GATEWAY_API_KEY="<your-api-key>"
+    ```
+
+1. Send an API request in your IDE. You can use the Python example request below, replacing `<model-name>` with the model you want to use.
 
     ```python
     import os
