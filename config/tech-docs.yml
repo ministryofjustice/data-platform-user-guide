@@ -2,8 +2,10 @@
 host: https://user-guide.data-platform.service.justice.gov.uk
 show_govuk_logo: false
 service_name: Justice Data Platform
-service_link: https://data-platform.service.justice.gov.uk
+service_link: https://data-platform.service.justice.gov.uk/app
 header_links:
+  About: https://data-platform.service.justice.gov.uk
+  Support: /support/
   User guide: https://user-guide.data-platform.service.justice.gov.uk
 footer_links:
   Accessibility: /accessibility.html
