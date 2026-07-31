@@ -20,5 +20,7 @@ jobs:
       super-linter-variables: |
         {
           "VALIDATE_CSS": false,
-          "VALIDATE_JSCPD": false
+          "VALIDATE_JSCPD": false,
+          "LINTER_RULES_PATH": ".",
+          "YAML_CONFIG_FILE": ".yaml-lint.yml"
         }

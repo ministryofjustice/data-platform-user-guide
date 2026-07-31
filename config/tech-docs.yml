@@ -1,17 +1,23 @@
 ---
 host: https://user-guide.data-platform.service.justice.gov.uk
 show_govuk_logo: false
-service_name: Data Platform User Guide
-service_link: /
+service_name: Justice Data Platform
+service_link: https://data-platform.service.justice.gov.uk/app
 header_links:
+  About: https://data-platform.service.justice.gov.uk
+  Support: /support/
+  User guide: https://user-guide.data-platform.service.justice.gov.uk
+footer_links:
+  Accessibility: /accessibility.html
 enable_search: true
+multipage_nav: true
 collapsible_nav: true
-max_toc_heading_level: 3
+max_toc_heading_level: 2
 prevent_indexing: true
 show_contribution_banner: true
 github_repo: ministryofjustice/data-platform-user-guide
 github_branch: main
-full_service_name: Data Platform User Guide
+full_service_name: Justice Data Platform
 show_expiry: true
 show_review_banner: true
 ga4_tracking_id: G-K9RSJ6P8JT
