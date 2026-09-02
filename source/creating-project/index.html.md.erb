@@ -1,14 +1,14 @@
 ---
 title: Creating a project
 weight: 3
-last_reviewed_on: 2026-08-25
+last_reviewed_on: 2026-09-02
 review_in: 12 months
 ---
 
 # <%= current_page.data.title %>
 
 The Justice Data Platform uses a project-based system which will help keep your data assets secure, reproducible and scalable.
-For the first version of the Justice Data Platform, a project helps you organise and control access to models from the service's AI gateway.
+For the first version of the Justice Data Platform, a project helps you organise and control access to models from the Justice AI Gateway.
 
 When you create a project, you can:
 
@@ -22,7 +22,7 @@ Once you have a working API key, you can use it to access AI models.
 
 ## Check which endpoint you need to use
 
-The Justice Data Platform’s AI gateway has two endpoints:
+The Justice AI Gateway has two endpoints:
 
 * an internal endpoint for users connecting from MOJ services
 * a standard endpoint for any users
@@ -41,7 +41,7 @@ If you need to make API key changes (for example, create a new key or regenerate
 
 ## Check your API key works
 
-After you’ve created your API key, make a basic request to the Justice Data Platform’s AI gateway to check it works. You can do this by completing the steps below.
+After you’ve created your API key, make a basic request to the Justice AI Gateway to check it works. You can do this by completing the steps below.
 
 ### Test your API key in your IDE
 
@@ -102,7 +102,7 @@ also replace the standard endpoint with the internal endpoint if you are connect
 
 ### Error handling for API calls
 
-If you encounter an error when making requests to the Justice Data Platform’s AI gateway, try the following:
+If you encounter an error when making requests to the Justice AI Gateway, try the following:
 
 * make sure your API key is correctly set as an environment variable
 * check you are using the correct model name specifying the version number
@@ -112,8 +112,10 @@ Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.
 
 <!-- #### How AI safeguards affect your requests
 
-We use automated checks to prevent the AI gateway from returning harmful or prohibited content. If your request is blocked, you’ll receive
+We use automated checks to prevent the Justice AI Gateway from returning harmful or prohibited content. If your request is blocked, you’ll receive
 a `400 Bad request` response with the error "Violated guardrail policy". If you think your request was incorrectly flagged,
 raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) with the response
 you received.
 -->
+
+<%= partial "partials/links" %>
