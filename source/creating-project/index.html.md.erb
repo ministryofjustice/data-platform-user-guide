@@ -53,8 +53,8 @@ After you’ve created your API key, make a basic request to the Justice AI Gate
     export AI_GATEWAY_API_KEY="<your-api-key>"
     ```
 
-1. Send an API request in your IDE. You can use the Python example request below, replacing `<model-name>` with the model you want to use. You should replace the
-standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
+1. Send an API request in your IDE. You can use the Python example request below, replacing `<model-name>` with the exact name of the model you want to use.
+    You should replace the standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
 
     ```python
     import os
@@ -85,8 +85,8 @@ If the request in your IDE is successful, you do not need to do this step. You c
     export AI_GATEWAY_API_KEY="<your-api-key>"
     ```
 
-1. Send a request using `curl`, replacing placeholders in the example below with your API key and the model you want to use. You should
-also replace the standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
+1. Send a request using `curl`, replacing placeholders in the example below with your API key and the exact name of the model you want to use.
+    You should also replace the standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
 
      ```bash
      curl https://ai-gateway.justice.gov.uk/responses \
@@ -105,7 +105,7 @@ also replace the standard endpoint with the internal endpoint if you are connect
 If you encounter an error when making requests to the Justice AI Gateway, try the following:
 
 * make sure your API key is correctly set as an environment variable
-* check you are using the correct model name specifying the version number
+* check your request specifies the correct model name and includes the version number
 * check the [status page](https://status.data-platform.service.justice.gov.uk/posts/dashboard) for any ongoing incidents
 
 Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) if the problem continues, including your Project ID and Key ID (not your API key). You can find these by going to *Projects* in the Justice Data Platform and selecting your project.
