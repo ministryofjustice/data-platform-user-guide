@@ -1,14 +1,14 @@
 ---
 title: Creating a project
 weight: 3
-last_reviewed_on: 2026-07-29
+last_reviewed_on: 2026-09-02
 review_in: 12 months
 ---
 
 # <%= current_page.data.title %>
 
 The Justice Data Platform uses a project-based system which will help keep your data assets secure, reproducible and scalable.
-For the first version of the Justice Data Platform, a project helps you organise and control access to models from the service's AI gateway.
+For the first version of the Justice Data Platform, a project helps you organise and control access to models from the Justice AI Gateway.
 
 When you create a project, you can:
 
@@ -16,17 +16,32 @@ When you create a project, you can:
 * create an API key
 * set the business unit it’s associated with
 
-You can only add members with an `@justice.gov.uk` email address.
+You can only add members who have an MOJ Microsoft account.
 
 Once you have a working API key, you can use it to access AI models.
+
+## Check which endpoint you need to use
+
+The Justice AI Gateway has two endpoints:
+
+* an internal endpoint for users connecting from MOJ services
+* a standard endpoint for users connecting from other environments
+
+You should use the internal endpoint if you're connecting from MOJ's Cloud Platform. You can access it from `https://internal.ai-gateway.justice.gov.uk`.
+
+<!-- You should use the internal endpoint if you're connecting from MOJ's Cloud Platform or Modernisation Platform. You can access it from `https://internal.ai-gateway.justice.gov.uk`. -->
+
+Use the standard endpoint if you're connecting from any other environment. You can access it from `https://ai-gateway.justice.gov.uk`.
 
 ## Create an API key for your project
 
 After creating your project, follow the steps on the Justice Data Platform to create an API key. Make sure you save the API key in a secure place.
 
+If you need to make API key changes (for example, create a new key or regenerate an existing key), you can find more information in the [Managing projects](/managing-projects/) section of this user guide.
+
 ## Check your API key works
 
-After you’ve created your API key, make a basic request to the Justice Data Platform’s AI gateway to check it works. You can do this by completing the steps below.
+After you’ve created your API key, make a basic request to the Justice AI Gateway to check it works. You can do this by completing the steps below.
 
 ### Test your API key in your IDE
 
@@ -38,7 +53,8 @@ After you’ve created your API key, make a basic request to the Justice Data Pl
     export AI_GATEWAY_API_KEY="<your-api-key>"
     ```
 
-1. Send an API request in your IDE. You can use the Python example request below, replacing `<model-name>` with the model you want to use.
+1. Send an API request in your IDE. You can use the Python example request below, replacing `<model-name>` with the exact name of the model you want to use.
+    You should replace the standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
 
     ```python
     import os
@@ -69,7 +85,8 @@ If the request in your IDE is successful, you do not need to do this step. You c
     export AI_GATEWAY_API_KEY="<your-api-key>"
     ```
 
-1. Send a request using `curl`, replacing placeholders in the example below with your API key and the model you want to use.
+1. Send a request using `curl`, replacing placeholders in the example below with your API key and the exact name of the model you want to use.
+    You should also replace the standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
 
      ```bash
      curl https://ai-gateway.justice.gov.uk/responses \
@@ -82,3 +99,23 @@ If the request in your IDE is successful, you do not need to do this step. You c
     ```
 
 1. Check the response. If successful, you’ll receive `Your API key is working` or a similar response.
+
+### Error handling for API calls
+
+If you encounter an error when making requests to the Justice AI Gateway, try the following:
+
+* make sure your API key is correctly set as an environment variable
+* check your request specifies the correct model name and includes the version number
+* check the [status page](https://status.data-platform.service.justice.gov.uk/posts/dashboard) for any ongoing incidents
+
+Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) if the problem continues, including your Project ID and Key ID (not your API key). You can find these by going to *Projects* in the Justice Data Platform and selecting your project.
+
+<!-- #### How AI safeguards affect your requests
+
+We use automated checks to prevent the Justice AI Gateway from returning harmful or prohibited content. If your request is blocked, you’ll receive
+a `400 Bad request` response with the error "Violated guardrail policy". If you think your request was incorrectly flagged,
+raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) with the response
+you received.
+-->
+
+<%= partial "partials/links" %>
