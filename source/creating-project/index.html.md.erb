@@ -1,7 +1,7 @@
 ---
 title: Creating a project
 weight: 3
-last_reviewed_on: 2026-09-02
+last_reviewed_on: 2026-09-22
 review_in: 12 months
 ---
 
@@ -100,7 +100,7 @@ If the request in your IDE is successful, you do not need to do this step. You c
 
 1. Check the response. If successful, you’ll receive `Your API key is working` or a similar response.
 
-### Error handling for API calls
+## Error handling for API calls
 
 If you encounter an error when making requests to the Justice AI Gateway, try the following:
 
@@ -110,12 +110,14 @@ If you encounter an error when making requests to the Justice AI Gateway, try th
 
 Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) if the problem continues, including your Project ID and Key ID (not your API key). You can find these by going to *Projects* in the Justice Data Platform and selecting your project.
 
-<!-- #### How AI safeguards affect your requests
+### How AI safeguards affect your requests
 
-We use automated checks to prevent the Justice AI Gateway from returning harmful or prohibited content. If your request is blocked, you’ll receive
-a `400 Bad request` response with the error "Violated guardrail policy". If you think your request was incorrectly flagged,
-raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) with the response
-you received.
--->
+As part of our security policy, we use automated checks ('guardrails') to safeguard the Justice AI Gateway from malicious or harmful prompts.
+If your API request is blocked by these checks, the API returns a `400 Bad Request` response with a message referring to the AI Gateway security policy.
+
+You should first try simplifying or rewording your prompt if it's blocked.
+
+If the problem continues, you can raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) with the full error response.
+Our team can investigate platform issues, but the Justice AI Gateway does not retain prompt content, so we cannot determine why a specific prompt was blocked.
 
 <%= partial "partials/links" %>
