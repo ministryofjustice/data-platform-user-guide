@@ -102,11 +102,23 @@ If the request in your IDE is successful, you do not need to do this step. You c
 
 ## Error handling for API calls
 
-If you encounter an error when making requests to the Justice AI Gateway, try the following:
+Your code should account for requests that fail and log information to help you identify and resolve issues.
 
-* make sure your API key is correctly set as an environment variable
+Configure your error handling to log:
+
+* the HTTP status code
+* any error message
+* the response body (if available)
+* the time of the request
+
+> Do not log sensitive data such as API keys.
+
+If the log does not make the cause clear, try the following:
+
+* confirm your API key is correctly set as an environment variable
 * check your request specifies the correct model name and includes the version number
 * check the [status page](https://status.data-platform.service.justice.gov.uk/posts/dashboard) for any ongoing incidents
+* make sure you have not exceeded usage limits (select your project in the Justice Data Platform, then go to *Usage*)
 
 Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) if the problem continues, including your Project ID and Key ID (not your API key). You can find these by going to *Projects* in the Justice Data Platform and selecting your project.
 
