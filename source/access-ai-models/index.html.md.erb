@@ -1,0 +1,178 @@
+---
+title: Access AI models
+weight: 4
+last_reviewed_on: 2026-11-02
+review_in: 12 months
+---
+
+# <%= current_page.data.title %>
+
+Once you've created a project and have a working API key, you can use it to access AI models through the Justice AI Gateway.
+
+## Before you use the Justice AI Gateway
+
+The Justice AI Gateway is a secure way to access AI models. The Gateway is managed by the Office of the CTO and maintained by the Justice Data Platform team.
+It's designed to help you use AI models safely and securely, while also managing access, costs and usage for the organisation.
+
+In addition to [using the Justice Data Platform responsibly](../get-started/index.html#your-responsibilities-as-a-user), you must also meet the requirements listed below when using the Justice AI Gateway.
+
+### 1. Only use the Gateway for an approved purpose
+
+You can use the Justice AI Gateway for work approved by your business unit with a suitable data protection impact assessment (DPIA) in place.
+
+You must not use it for:
+
+- coding productivity
+- personal or non-work purposes
+- content which violates Ministry of Justice policies
+
+### 2. Store and manage your API keys securely
+
+Treat your API key like a password. You must store it securely and avoid including it in your application code.
+
+If you think your API key has been exposed or compromised, regenerate it immediately and report the incident to [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X).
+
+### 3. Understand and monitor project usage limits
+
+Check the [default usage limits per project](../get-started/index.html#fair-usage-and-cost-allocations) before using the Justice AI Gateway.
+You should regularly monitor your project's usage to avoid exceeding your allowances, which could result in your requests being blocked.
+
+If you need to exceed the default limits, you can [request an increase to your AI usage limits](/support/#request-an-increase-to-your-ai-usage-limits).
+
+### 4. Set up appropriate error handling and logging
+
+Make sure your application has appropriate error handling and diagnostic logging in place to help you identify and resolve issues with your requests.
+Your application should be able to handle failed requests and log relevant information, including:
+
+- HTTP status code
+- any error message
+- the time of the request
+
+### 5. Use resources proportionately
+
+When using the Justice AI Gateway, make sure you:
+
+- minimise requests and prompt size
+- limit outputs to only what you need
+- choose the cheapest suitable model for your use case
+- reuse outputs where possible, rather than generating new ones
+
+To do this, you should plan and optimise your AI usage before starting work on the Gateway. Plan your requests carefully, and provide clear instructions without unnecessary or repetitive information.
+Be mindful of the resources consumed and aim to use AI efficiently without compromising the quality of results.
+
+## Create an API key for your project
+
+After creating your project, follow the steps on the Justice Data Platform to create an API key. Make sure you save the API key in a secure place.
+
+If you need to make API key changes (for example, create a new key or regenerate an existing key), you can find more information in the [Managing projects](/managing-projects/) section of this user guide.
+
+> Do not use Justice AI Gateway API keys for AI-assisted coding tasks, such as code generation or completion. [Request a GitHub Copilot licence](https://github.com/ministryofjustice/.github/blob/main/docs/github-copilot-guidance.md#how-to-request-a-licence) for this instead.
+
+## Check which endpoint you need to use
+
+The Justice AI Gateway has two endpoints:
+
+* an internal endpoint for users connecting from MOJ services
+* a standard endpoint for users connecting from other environments
+
+You should use the internal endpoint if you're connecting from MOJ's Cloud Platform. You can access it from `https://internal.ai-gateway.justice.gov.uk`.
+
+<!-- You should use the internal endpoint if you're connecting from MOJ's Cloud Platform or Modernisation Platform. You can access it from `https://internal.ai-gateway.justice.gov.uk`. -->
+
+Use the standard endpoint if you're connecting from any other environment. You can access it from `https://ai-gateway.justice.gov.uk`.
+
+## Check your API key works
+
+After you’ve created your API key and checked which endpoint to use, make a basic request to the Justice AI Gateway to check it works.
+You can do this by completing the steps below.
+
+### Test your API key in your IDE
+
+1. Follow OpenAI’s documentation to [install an official SDK](https://developers.openai.com/api/docs/libraries?#install-an-official-sdk) for your language.
+
+1. Set your API key as an environment variable using the following command:
+
+    ```bash
+    export AI_GATEWAY_API_KEY="<your-api-key>"
+    ```
+
+1. Send an API request in your IDE. You can use the Python example request below, replacing `<model-name>` with the exact name of the model you want to use.
+    You should replace the standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
+
+    ```python
+    import os
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ["AI_GATEWAY_API_KEY"],
+        base_url="https://ai-gateway.justice.gov.uk/",
+    )
+
+    response = client.responses.create(
+        model="<model-name>",
+        input="Reply with: Your API key is working",
+    )
+
+    print(response.output_text)
+    ```
+
+1. Check the response. If successful, you’ll receive `Your API key is working` or a similar response.
+
+### Test your API key with `curl`
+
+If the request in your IDE is successful, you do not need to do this step. You can use it to help identify whether a problem is with your API key or the Justice Data Platform.
+
+1. Set your API key as an environment variable using the following command:
+
+    ```bash
+    export AI_GATEWAY_API_KEY="<your-api-key>"
+    ```
+
+1. Send a request using `curl`, replacing placeholders in the example below with your API key and the exact name of the model you want to use.
+    You should also replace the standard endpoint with the internal endpoint if you are connecting from MOJ's Cloud Platform.
+
+     ```bash
+     curl https://ai-gateway.justice.gov.uk/responses \
+       -H "Authorization: Bearer $AI_GATEWAY_API_KEY" \
+       -H "Content-Type: application/json" \
+       -d '{
+         "model": "<model-name>",
+         "input": "Reply with: Your API key is working"
+       }'
+    ```
+
+1. Check the response. If successful, you’ll receive `Your API key is working` or a similar response.
+
+## Error handling for API calls
+
+Your code should account for requests that fail and log information to help you identify and resolve issues.
+
+Configure your error handling to log:
+
+* the HTTP status code
+* any error message
+* the response body (if available)
+* the time of the request
+
+> Do not log sensitive data such as API keys.
+
+If the log does not make the cause clear, try the following:
+
+* confirm your API key is correctly set as an environment variable
+* check your request specifies the correct model name and includes the version number
+* check the [status page](https://status.data-platform.service.justice.gov.uk/posts/dashboard) for any ongoing incidents
+* make sure you have not exceeded usage limits (select your project in the Justice Data Platform, then go to *Usage*)
+
+Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) if the problem continues, including your Project ID and Key ID (not your API key). You can find these by going to *Projects* in the Justice Data Platform and selecting your project.
+
+### How AI safeguards affect your requests
+
+As part of our security policy, we use automated checks ('guardrails') to safeguard the Justice AI Gateway from malicious or harmful prompts.
+If your API request is blocked by these checks, the API returns a `400 Bad Request` response with a message referring to the AI Gateway security policy.
+
+You should first try simplifying or rewording your prompt if it's blocked.
+
+If the problem continues, you can raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) with the full error response.
+Our team can investigate platform issues, but the Justice AI Gateway does not retain prompt content, so we cannot determine why a specific prompt was blocked.
+
+<%= partial "partials/links" %>
