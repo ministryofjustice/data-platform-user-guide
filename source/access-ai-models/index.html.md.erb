@@ -16,11 +16,11 @@ It's designed to help you use AI models safely and securely, while also managing
 
 In addition to [using the Justice Data Platform responsibly](../get-started/index.html#your-responsibilities-as-a-user), you must also meet the requirements listed below when using the Justice AI Gateway.
 
-### 1. Only use the Gateway for approved work
+### 1. Only use the gateway for approved work
 
-You can use the Justice AI Gateway for work agreed with your team. Make sure there's a suitable data protection impact assessment (DPIA) in place if required.
+You can use the gateway for work agreed with your team. Make sure there's a suitable data protection impact assessment (DPIA) in place if required.
 
-You must not use it for:
+You must not use the gateway for:
 
 - coding productivity
 - personal or non-work purposes
@@ -49,11 +49,17 @@ If you need to exceed the default limits, you can [request an increase to your A
 ### 4. Set up appropriate error handling and logging
 
 Make sure your application has appropriate error handling and diagnostic logging in place to help you identify and resolve issues with your requests.
-Your application should be able to handle failed requests and log relevant information, including:
+Your application should be able to handle failed requests and log relevant information.
+
+Logs should include:
 
 - HTTP status code
 - any error message
 - the time of the request
+
+> Do not log sensitive data such as API keys.
+
+We recommend using Sentry.io for error tracking. You can find [information about setting up Sentry.io](https://cloud-optimisation-and-accountability.justice.gov.uk/documentation/operations-engineering-legacy/operations-engineering-user-guide/managing-alerting/sentry.html) on the Cloud Optimisation and Accountability team's guidance.
 
 ### 5. Use resources proportionately
 
@@ -64,7 +70,7 @@ When using the Justice AI Gateway, make sure you:
 - choose the cheapest suitable model for your use case
 - reuse outputs where possible, rather than generating new ones
 
-To do this, you should plan and optimise your AI usage before starting work on the Gateway. Plan your requests carefully, and provide clear instructions without unnecessary or repetitive information.
+To do this, you should plan and optimise your AI usage before starting work on the gateway. Plan your requests carefully, and provide clear instructions without unnecessary or repetitive information.
 Be mindful of the resources consumed and aim to use AI efficiently without compromising the quality of results.
 
 ## Create an API key for your project
@@ -77,16 +83,14 @@ If you need to make API key changes (for example, create a new key or regenerate
 
 ## Check which endpoint you need to use
 
-The Justice AI Gateway has two endpoints:
+You can use the Justice AI Gateway through two endpoints on MOJ's private network:
 
-* an internal endpoint for users connecting from MOJ services
-* a standard endpoint for users connecting from other environments
+* an internal endpoint for connecting from MOJ's Cloud Platform
+* a standard endpoint for connecting from other environments
 
-You should use the internal endpoint if you're connecting from MOJ's Cloud Platform. You can access it from `https://internal.ai-gateway.justice.gov.uk`.
+You can use the internal endpoint from `https://internal.ai-gateway.justice.gov.uk`.
 
-<!-- You should use the internal endpoint if you're connecting from MOJ's Cloud Platform or Modernisation Platform. You can access it from `https://internal.ai-gateway.justice.gov.uk`. -->
-
-Use the standard endpoint if you're connecting from any other MOJ environment. You must also be connected to Prisma VPN or Alpha VPN. You can access it from `https://ai-gateway.justice.gov.uk`.
+You can use the standard endpoint from `https://ai-gateway.justice.gov.uk` but you must be connected to Prisma VPN or Alpha VPN.
 
 ## Check your API key works
 
@@ -152,16 +156,7 @@ If the request in your IDE is successful, you do not need to do this step. You c
 
 ## Error handling for API calls
 
-Your code should account for requests that fail and log information to help you identify and resolve issues.
-
-Configure your error handling to log:
-
-* the HTTP status code
-* any error message
-* the response body (if available)
-* the time of the request
-
-> Do not log sensitive data such as API keys.
+Your code should account for requests that fail and log information to help you identify and resolve issues as described in [Set up appropriate error handling and logging](/set-up-appropriate-error-handling-and-logging/).
 
 If the log does not make the cause clear, try the following:
 
@@ -170,7 +165,10 @@ If the log does not make the cause clear, try the following:
 * check the [status page](https://status.data-platform.service.justice.gov.uk/posts/dashboard) for any ongoing incidents
 * make sure you have not exceeded usage limits (select your project in the Justice Data Platform, then go to *Usage*)
 
-Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) if the problem continues, including your Project ID and Key ID (not your API key). You can find these by going to *Projects* in the Justice Data Platform and selecting your project.
+Raise an issue in [the #ask-data-platform Slack channel](https://moj.enterprise.slack.com/archives/C0B949G0J2X) if the problem continues, including the **Project ID** and **Key ID** (not your API key).
+
+You can find these by going to **Projects** in the Justice Data Platform, selecting your project and checking **Overview**.
+Then select **API keys** from the left navigation to find the **Key ID**.
 
 ### How AI safeguards affect your requests
 
